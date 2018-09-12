@@ -21,21 +21,26 @@ function oldSearch() {
 
 function oldCompare() {
     const staff = {
-        Vasja: -23,
-        Petja: -27,
-        Dasha: 22,
-        Lena: 0,
-        Masha: 18,
+        Vasja: -20,
+        Petja: -7,
+        Dasha: -10,
+        Lena: -7,
+        Masha: -17,
     };
-    let maxValue = 0;
-    let maxValueName = '';
+    let maxValue;
+    let maxValueName = [];
     for (const prop of Object.keys(staff)) {
-        if ( maxValue < staff[prop]) {
-            maxValue = staff[prop],
-            maxValueName = prop
+        if (maxValue === undefined || maxValue < staff[prop]) {
+            maxValueName = [];
+            maxValue = staff[prop]
         }
-        console.log(maxValueName, maxValue);
+        if (maxValue == staff[prop]) {
+            maxValueName.push(prop)
+        }     
     }
+    let maxAge = maxValueName + " = " + maxValue;
+    return maxAge;
 }
 
-oldCompare();
+const oldEmployee = oldCompare();
+console.log(oldEmployee);
