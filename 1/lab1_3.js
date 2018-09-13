@@ -8,17 +8,6 @@ const staff = {
 };
 */
 
-function oldSearch() {
-    const staff = {
-        Vasja: 23,
-        Petja: 27,
-        Dasha: 22,
-    };
-    for (const prop of Object.keys(staff)) {
-        console.log("staff." + prop + " = " + staff[prop]);
-      }
-}
-
 function oldCompare() {
     const staff = {
         Vasja: -20,
@@ -38,8 +27,7 @@ function oldCompare() {
             maxValueName.push(prop)
         }     
     }
-    let maxAge = maxValueName + " = " + maxValue;
-    return maxAge;
+    return {[maxValueName]: maxValue};
 }
 
 const oldEmployee = oldCompare();
