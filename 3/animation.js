@@ -138,7 +138,7 @@ function moveCloud({distance, cloud, boxWidth, boxHeight}) { // обновлен
     }
 }
 
-function createClouds({boxWidth, boxHeight, speed, direction}) {
+function createCloud({boxWidth, boxHeight, speed, direction}) {
     const startX = boxWidth;
     const startY = boxHeight;
     return new Cloud({
@@ -162,8 +162,7 @@ function moveClouds({clouds, dt, boxWidth, boxHeight}) {
 }
 
 function updateSky({sky, angle}) { // обновление цвета неба
-    const lightness = (Math.sin(angle - Math.PI/2) + 1) * 50 - 50;
-    sky.color.l = lightness
+    sky.color.l = (Math.sin(angle - Math.PI/2) + 1) * 50 - 50
 }
 
 function update({clouds, sun, sky, boxWidth: width, boxHeight: height, dt}) { // обновление всей анимации
@@ -186,7 +185,7 @@ function main() {
     let clouds = [];
 
     for (let i = 0; i < CLOUD_COUNT; i++) {
-        clouds.push(createClouds({
+        clouds.push(createCloud({
             boxWidth: Math.random() * width,
             boxHeight: Math.random() * 40 + 30,
             speed: Math.random() * CLOUD_SPEED + 100,
@@ -199,8 +198,6 @@ function main() {
     let sky = new Sky({color: hsl});
 
     redraw({ctx, sky, sun, clouds, width, height});  // прорисовка статики первоначальная
-  
-    cloud = clouds[1];
 
     let lastTimestamp = Date.now(); //текущее время в ms
     const animateFn = () => {
